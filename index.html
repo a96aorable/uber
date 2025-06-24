@@ -1,148 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Hi, it's Gee. Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get." />
-<meta name="theme-color" content="#d50000" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Hi, it's Gee. Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get." />
+  <meta name="theme-color" content="#d50000" />
+  <title>Let's Get You Some Where - Ride with Gee</title>
 
-<title>Let's Get You Some Where - Ride with Gee</title>
+  <!-- Meta for social -->
+  <meta property="og:title" content="Let's Get You Some Where - Ride with Gee" />
+  <meta property="og:description" content="Fill out the form to book your next ride." />
+  <meta property="og:image" content="https://uber.itzgee.com/preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ride with Gee" />
+  <meta name="twitter:description" content="Your next ride, done right." />
+  <meta name="twitter:image" content="uber.itzgee.com/preview.png" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://uber.itzgee.com/" />
-<meta property="og:title" content="Let's Get You Some Where - Ride with Gee" />
-<meta property="og:description" content="Hi, it's Gee. Fill out the form below and we'll get your booking completed. From airport transfers to city breaks, you'll ride in style with Gee." />
-<meta property="og:image" content="https://uber.itzgee.com/preview.png" />
+  <!-- Flatpickr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_red.css" />
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="https://uber.itzgee.com/" />
-<meta name="twitter:title" content="Let's Get You Some Where - Ride with Gee" />
-<meta name="twitter:description" content="Hi, it's Gee. Fill out the form below and we'll get your booking completed. From airport transfers to city breaks, you'll ride in style with Gee." />
-<meta name="twitter:image" content="uber.itzgee.com/preview.png" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body, html {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f8f8f8;
+      color: #111;
+    }
 
-<style>
-  /* Global box-sizing */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f8f8;
-    color: #111;
-    overflow-x: hidden;
-  }
-
-  main {
-    position: relative;
-    z-index: 1;
-    max-width: 480px;
-    margin: 4rem auto 5rem;
-    background: #fff;
-    border-radius: 18px;
-    padding: 2.5rem 2rem 3rem;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
-  }
-
-  h1 {
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: #d50000;
-    margin-bottom: 0.25rem;
-    text-align: center;
-    user-select: text;
-  }
-  h2 {
-    font-weight: 400;
-    font-size: 1.1rem;
-    margin-top: 0;
-    margin-bottom: 2rem;
-    color: #444;
-    text-align: center;
-    line-height: 1.4;
-    user-select: text;
-  }
-
-  form label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.4rem;
-    margin-top: 1rem;
-    user-select: text;
-  }
-
-  input, textarea, button {
-    font-family: inherit;
-    font-size: 1rem;
-  }
-
-  input, textarea {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 1.8px solid #d50000;
-    border-radius: 10px;
-    outline-offset: 2px;
-    outline-color: #d50000;
-    color: #111;
-    font-weight: 600;
-    transition: border-color 0.3s ease;
-    user-select: text;
-    background-color: #fff;
-    resize: vertical;
-  }
-  input:focus, textarea:focus {
-    border-color: #a30000;
-  }
-
-  button[type="submit"] {
-    margin-top: 2.2rem;
-    width: 100%;
-    background-color: #d50000;
-    color: #fff;
-    font-weight: 900;
-    font-size: 1.25rem;
-    padding: 1rem 0;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    user-select: none;
-  }
-  button[type="submit"]:hover,
-  button[type="submit"]:focus {
-    background-color: #a30000;
-  }
-
-  #success-message {
-    margin-top: 1rem;
-    color: #2e7d32;
-    font-weight: 700;
-    font-size: 1.1rem;
-    display: none;
-    text-align: center;
-    user-select: text;
-  }
-
-  .g-recaptcha {
-    margin-top: 1.5rem;
-    user-select: none;
-  }
-
-  @media (max-width: 520px) {
     main {
-      margin: 2rem 1rem 3rem;
-      padding: 2rem 1.5rem 2.5rem;
+      max-width: 480px;
+      margin: 4rem auto 5rem;
+      background: #fff;
+      border-radius: 18px;
+      padding: 2.5rem 2rem 3rem;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.12);
     }
+
     h1 {
-      font-size: 2rem;
+      text-align: center;
+      color: #d50000;
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
     }
-  }
-</style>
+
+    h2 {
+      font-weight: 400;
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #444;
+    }
+
+    form label {
+      display: block;
+      font-weight: 600;
+      margin: 1.2rem 0 0.4rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.8px solid #d50000;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: #fff;
+      color: #111;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #a30000;
+    }
+
+    ::placeholder {
+      font-weight: 400;
+      color: #888;
+    }
+
+    .with-icon {
+      position: relative;
+    }
+
+    .with-icon input {
+      padding-left: 2.5rem;
+    }
+
+    .field-icon {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #d50000;
+      font-size: 1.2rem;
+    }
+
+    button[type="submit"] {
+      margin-top: 2rem;
+      width: 100%;
+      background-color: #d50000;
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.25rem;
+      padding: 1rem 0;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #a30000;
+    }
+
+    #success-message {
+      margin-top: 1rem;
+      color: #2e7d32;
+      font-weight: 700;
+      text-align: center;
+      display: none;
+    }
+
+    #loading-spinner {
+      display: none;
+      text-align: center;
+      color: #d50000;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      padding: 2rem 1rem;
+      border-top: 1px solid #ccc;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 520px) {
+      main {
+        margin: 2rem 1rem;
+        padding: 2rem 1.5rem;
+      }
+      h1 { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -152,62 +160,123 @@
 
   <form id="bookingForm" action="https://formspree.io/f/xjkraeqq" method="POST" autocomplete="off" novalidate>
     <label for="firstName">First Name *</label>
-    <input type="text" id="firstName" name="firstName" required autocomplete="given-name" placeholder="Your first name" />
+    <input type="text" id="firstName" name="firstName" required placeholder="Your first name" />
 
     <label for="lastName">Last Name *</label>
-    <input type="text" id="lastName" name="lastName" required autocomplete="family-name" placeholder="Your last name" />
+    <input type="text" id="lastName" name="lastName" required placeholder="Your last name" />
 
     <label for="email">Email Address *</label>
-    <input type="email" id="email" name="email" required autocomplete="email" placeholder="example@email.com" />
+    <input type="email" id="email" name="email" required placeholder="example@email.com" />
 
     <label for="mobileNumber">Mobile Number (with country code) *</label>
-    <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="+44 7XXX XXX XXX" autocomplete="tel" inputmode="tel" pattern="^\+?[0-9\s\-]{7,15}$" />
+    <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="+44 7XXX XXX XXX" inputmode="tel" />
+
+    <label for="pickupDate">Pick Up Date (DD/MM/YYYY) *</label>
+    <div class="with-icon">
+      <span class="field-icon">📅</span>
+      <input type="text" id="pickupDate" name="pickupDate" required />
+    </div>
+
+    <label for="pickupTime">Pick Up Time *</label>
+    <div class="with-icon">
+      <span class="field-icon">⏰</span>
+      <input type="text" id="pickupTime" name="pickupTime" required />
+    </div>
+
+    <label for="passengers">Number of Passengers *</label>
+    <select id="passengers" name="passengers" required>
+      <option value="" disabled selected>Select number of passengers</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5+</option>
+    </select>
 
     <label for="pickupPoint">Pick Up Point *</label>
-    <input type="text" id="pickupPoint" name="pickupPoint" placeholder="Enter pickup location" required autocomplete="off" />
+    <div class="with-icon">
+      <span class="field-icon">📍</span>
+      <input type="text" id="pickupPoint" name="pickupPoint" placeholder="Enter pickup location" required />
+    </div>
 
     <label for="dropoffPoint">Drop Off Point *</label>
-    <input type="text" id="dropoffPoint" name="dropoffPoint" placeholder="Enter drop-off location" required autocomplete="off" />
+    <div class="with-icon">
+      <span class="field-icon">🏁</span>
+      <input type="text" id="dropoffPoint" name="dropoffPoint" placeholder="Enter drop-off location" required />
+    </div>
 
-    <label for="specialRequests">Special Requests</label>
-    <textarea id="specialRequests" name="specialRequests" rows="4"
-      placeholder="In this optional field, include any special requests, such as passenger count, luggage details (e.g., 2 suitcases, 1 carry-on), or specific needs like a child seat or pick-up instructions (e.g., Terminal 2, Arrivals, 3:30 PM). Example: "3 passengers, 2 bags, booster seat for 5-year-old, Terminal 2 pick-up at 3:30 PM." Leave blank if no requests."></textarea>
+    <label for="specialRequests">Special Requests (Optional)</label>
+    <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="e.g., 2 bags, child seat, Terminal 2 at 3:30 PM."></textarea>
 
     <div class="g-recaptcha" data-sitekey="6LeXGWsrAAAAANXY-Nu5L8lqUbdYx3VFZqVnl9EU"></div>
 
     <button type="submit">Book Your Ride</button>
+    <div id="loading-spinner">Submitting your booking...</div>
     <p id="success-message">Thank you! Your booking request has been sent.</p>
   </form>
 </main>
 
+<footer>
+  © 2025 Ride with Gee. All rights reserved.
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfK6L1Zs-HEHszXPzfvwZOmTyuPNEseKs&libraries=places&callback=initAutocomplete" async defer></script>
+
 <script>
+  // Flatpickr
+  flatpickr("#pickupDate", {
+    dateFormat: "d/m/Y",
+    minDate: "today"
+  });
+
+  flatpickr("#pickupTime", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true,
+    defaultDate: new Date(new Date().getTime() + 60 * 60 * 1000),
+    minuteIncrement: 5
+  });
+
+  // Google Maps Autocomplete
+  function initAutocomplete() {
+    const pickupInput = document.getElementById('pickupPoint');
+    const dropoffInput = document.getElementById('dropoffPoint');
+    new google.maps.places.Autocomplete(pickupInput, { types: ['geocode'] });
+    new google.maps.places.Autocomplete(dropoffInput, { types: ['geocode'] });
+  }
+
+  // Form submit
   const form = document.getElementById('bookingForm');
   const successMsg = document.getElementById('success-message');
+  const spinner = document.getElementById('loading-spinner');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    // Add your backend & reCAPTCHA validation here
+    spinner.style.display = 'block';
 
     const formData = new FormData(form);
-
     try {
       const response = await fetch(form.action, {
         method: form.method,
         body: formData,
         headers: { 'Accept': 'application/json' }
       });
+
+      spinner.style.display = 'none';
+
       if (response.ok) {
         form.reset();
         successMsg.style.display = 'block';
-        setTimeout(() => {
-          successMsg.style.display = 'none';
-        }, 8000);
+        setTimeout(() => successMsg.style.display = 'none', 8000);
       } else {
-        alert('Oops! There was a problem submitting your form.');
+        alert('Oops! Something went wrong. Please try again.');
       }
     } catch (error) {
-      alert('Oops! There was a problem submitting your form.');
+      spinner.style.display = 'none';
+      alert('Submission failed. Please check your connection and try again.');
     }
   });
 </script>

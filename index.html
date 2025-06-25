@@ -162,7 +162,7 @@
   <h1>LET'S GET YOU SOME WHERE</h1>
   <h2>Hi, it's Gee. Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get.</h2>
 
-  <form id="bookingForm" action="https://formspree.io/f/xjkraeqq" method="POST" autocomplete="off" novalidate>
+  <form id="bookingForm" action="https://formspree.io/f/xjkraeqq" method="POST" autocomplete="off">
     <label for="firstName">First Name *</label>
     <input type="text" id="firstName" name="firstName" required placeholder="Your first name" />
 
@@ -173,7 +173,7 @@
     <input type="email" id="email" name="email" required placeholder="example@email.com" />
 
     <label for="mobileNumber">Mobile Number (with country code) *</label>
-    <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="+44 7XXX XXX XXX" inputmode="tel" />
+    <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="+44 7XXX XXX XXX" inputmode="tel" pattern="^[0-9+\s()-]{10,18}$" />
 
     <label for="pickupDate">Pick Up Date (DD/MM/YYYY) *</label>
     <div class="with-icon">
@@ -251,13 +251,32 @@
     new google.maps.places.Autocomplete(dropoffInput, { types: ['geocode'] });
   }
 
-  // Form submit
+  // Restrict mobile input to digits, +, (), -, and spaces
+  document.getElementById("mobileNumber").addEventListener("input", function (e) {
+    this.value = this.value.replace(/[^0-9+\s()-]/g, '');
+  });
+
+  function validateRecaptcha() {
+    return grecaptcha.getResponse().length !== 0;
+  }
+
   const form = document.getElementById('bookingForm');
   const successMsg = document.getElementById('success-message');
   const spinner = document.getElementById('loading-spinner');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    if (!validateRecaptcha()) {
+      alert("Please complete the reCAPTCHA.");
+      return;
+    }
+
     spinner.style.display = 'block';
 
     const formData = new FormData(form);
@@ -272,6 +291,7 @@
 
       if (response.ok) {
         form.reset();
+        grecaptcha.reset();
         successMsg.style.display = 'block';
         setTimeout(() => successMsg.style.display = 'none', 8000);
       } else {

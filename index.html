@@ -21,7 +21,7 @@
   <meta property="og:image:alt" content="Ride with Gee preview image" />
 
   <!-- Flatpickr -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_red.css" />
 
   <style>
@@ -158,16 +158,25 @@
     <label for="pickupTime">Pick Up Time *</label>
     <div class="with-icon">
       <span class="field-icon">⏰</span>
-      <input type="text" id="pickupTime" name="pickupTime" required />
+      <!-- Added pattern attribute -->
+      <input
+        type="text"
+        id="pickupTime"
+        name="pickupTime"
+        required
+        pattern="^([01]\d|2[0-3]):[0-5]\d$"
+        aria-describedby="timeFormatHint"
+      />
+      <small id="timeFormatHint" style="font-size:0.8rem;color:#888;">Format: HH:mm (24-hour)</small>
     </div>
 
     <label for="passengers">Number of Passengers *</label>
     <select id="passengers" name="passengers" required>
       <option value="" disabled selected>Select number of passengers</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
     </select>
 
     <label for="pickupPoint">Pick Up Point *</label>
@@ -200,17 +209,27 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfK6L1Zs-HEHszXPzfvwZOmTyuPNEseKs&libraries=places&callback=initAutocomplete" async defer></script>
 
 <script>
-  /* === Flatpickr === */
+  /* === Set default time BEFORE Flatpickr === */
+  const defaultTime = new Date(Date.now() + 60 * 60 * 1000);
+  const pickupTimeInput = document.getElementById('pickupTime');
+  pickupTimeInput.value = defaultTime.toLocaleTimeString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+
+  /* === Flatpickr init === */
   flatpickr("#pickupDate", {
     dateFormat: "d/m/Y",
     minDate: "today"
   });
+
   flatpickr("#pickupTime", {
     enableTime: true,
     noCalendar: true,
     dateFormat: "H:i",
     time_24hr: true,
-    defaultDate: new Date(Date.now() + 60 * 60 * 1000),
+    defaultDate: defaultTime,
     minuteIncrement: 5
   });
 
@@ -222,7 +241,7 @@
     new google.maps.places.Autocomplete(dropoffInput, { types: ['geocode'] });
   }
 
-  /* === Allow only valid phone characters === */
+  /* === Allow only valid phone chars === */
   document.getElementById("mobileNumber").addEventListener("input", function () {
     this.value = this.value.replace(/[^0-9+\s()-]/g, '');
   });
@@ -254,6 +273,14 @@
       if (response.ok) {
         form.reset();
         successMsg.style.display = 'block';
+
+        // Reset time input to default after reset
+        pickupTimeInput.value = defaultTime.toLocaleTimeString('en-GB', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        });
+
         setTimeout(() => successMsg.style.display = 'none', 10000);
       } else {
         alert('Oops! Something went wrong. Please try again.');

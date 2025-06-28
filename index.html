@@ -254,10 +254,13 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfK6L1Zs-HEHszXPzfvwZOmTyuPNEseKs&amp;libraries=places&amp;callback=initAutocomplete"></script>
 <script>
-flatpickr("#pickupDate", {
-  dateFormat: "d/m/Y",
-  minDate: "today"
-});
+function initAutocomplete() {
+  const pickupInput = document.getElementById('pickupPoint');
+  const dropoffInput = document.getElementById('dropoffPoint');
+  new google.maps.places.Autocomplete(pickupInput, { types: ['geocode'] });
+  new google.maps.places.Autocomplete(dropoffInput, { types: ['geocode'] });
+}
+</script><script>
 flatpickr("#pickupTime", {
   enableTime: true,
   noCalendar: true,
@@ -269,12 +272,5 @@ flatpickr("#pickupTime", {
     document.getElementById("pickupTime").value = dateStr;
   }
 });
-</script><script>
-function initAutocomplete() {
-  const pickupInput = document.getElementById('pickupPoint');
-  const dropoffInput = document.getElementById('dropoffPoint');
-  new google.maps.places.Autocomplete(pickupInput, { types: ['geocode'] });
-  new google.maps.places.Autocomplete(dropoffInput, { types: ['geocode'] });
-}
 </script></body>
 </html>

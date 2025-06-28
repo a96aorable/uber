@@ -272,5 +272,46 @@ flatpickr("#pickupTime", {
     document.getElementById("pickupTime").value = dateStr;
   }
 });
+</script><script>
+const form = document.getElementById('bookingForm');
+const successMsg = document.getElementById('success-message');
+const spinner = document.getElementById('loading-spinner');
+const pickupTimeInput = document.getElementById('pickupTime');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const pickupTimeVal = pickupTimeInput.value.trim();
+  if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(pickupTimeVal)) {
+    alert('Please enter a valid time in 24-hour format (HH:mm).');
+    spinner.style.display = 'none';
+    return;
+  }
+
+  spinner.style.display = 'block';
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    spinner.style.display = 'none';
+
+    if (response.ok) {
+      form.reset();
+      successMsg.style.display = 'block';
+      pickupTimeInput.value = "";
+
+      setTimeout(() => successMsg.style.display = 'none', 10000);
+    } else {
+      alert('Oops! Something went wrong. Please try again.');
+    }
+  } catch (err) {
+    spinner.style.display = 'none';
+    alert('Submission failed. Please check your connection and try again.');
+  }
+});
 </script></body>
 </html>

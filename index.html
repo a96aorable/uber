@@ -157,7 +157,7 @@
 <div class="with-icon">
 <span class="field-icon">⏰</span>
 <!-- Added pattern attribute -->
-<input aria-describedby="timeFormatHint" autocomplete="off" id="pickupTime" name="pickupTime" readonly="readonly" type="text"/>
+<input aria-describedby="timeFormatHint" autocomplete="off" id="pickupTime" name="pickupTime" readonly="readonly" required="" type="text"/>
 <small id="timeFormatHint" style="font-size:0.8rem;color:#888;">Format: HH:mm (24-hour)</small>
 </div>
 <label for="passengers">Number of Passengers *</label>
@@ -254,6 +254,10 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfK6L1Zs-HEHszXPzfvwZOmTyuPNEseKs&amp;libraries=places&amp;callback=initAutocomplete"></script>
 <script>
+flatpickr("#pickupDate", {
+  dateFormat: "d/m/Y",
+  minDate: "today"
+});
 flatpickr("#pickupTime", {
   enableTime: true,
   noCalendar: true,
@@ -265,5 +269,12 @@ flatpickr("#pickupTime", {
     document.getElementById("pickupTime").value = dateStr;
   }
 });
+</script><script>
+function initAutocomplete() {
+  const pickupInput = document.getElementById('pickupPoint');
+  const dropoffInput = document.getElementById('dropoffPoint');
+  new google.maps.places.Autocomplete(pickupInput, { types: ['geocode'] });
+  new google.maps.places.Autocomplete(dropoffInput, { types: ['geocode'] });
+}
 </script></body>
 </html>

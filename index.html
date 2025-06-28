@@ -157,7 +157,7 @@
 <div class="with-icon">
 <span class="field-icon">⏰</span>
 <!-- Added pattern attribute -->
-<input aria-describedby="timeFormatHint" id="pickupTime" name="pickupTime" pattern="^([01]\d|2[0-3]):[0-5]\d$" required="" type="time"/>
+<input aria-describedby="timeFormatHint" autocomplete="off" id="pickupTime" inputmode="text" name="pickupTime" required="" type="time"/>
 <small id="timeFormatHint" style="font-size:0.8rem;color:#888;">Format: HH:mm (24-hour)</small>
 </div>
 <label for="passengers">Number of Passengers *</label>
@@ -184,7 +184,7 @@
 <div id="loading-spinner">Submitting your booking...</div>
 <p id="success-message">Thanks! We have received your booking request, and we will get in touch with you shortly to confirm your booking. Thanks for choosing Ride with Gee.</p>
 </form>
-<section id="faq" style="max-width: 480px; margin: 3rem auto 1rem auto; background: #fff; border-radius: 16px; padding: 2rem 2rem 1rem 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.08);" style="max-width: 480px; margin: 3rem auto; background: #fff; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+<section id="faq" style="max-width: 480px; margin: 3rem auto; background: #fff; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
 <h2 style="text-align:center; color:#d50000;">❓ Frequently Asked Questions</h2>
 <div class="faq-item"><button class="faq-question">💰 How much does a ride cost?</button><div class="faq-answer"><p>Prices depend on your pickup and drop-off locations, travel time, and any special requests. Once we receive your form, we’ll confirm a fair quote — no hidden charges.</p></div></div>
 <div class="faq-item"><button class="faq-question">📍 Where do you pick up from?</button><div class="faq-answer"><p>We’re based in the UK, but we cover a wide range of locations — including airports, cities, and even cross-border trips to Europe if needed. Just ask!</p></div></div>

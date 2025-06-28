@@ -157,7 +157,7 @@
 <div class="with-icon">
 <span class="field-icon">⏰</span>
 <!-- Added pattern attribute -->
-<input aria-describedby="timeFormatHint" autocomplete="off" id="pickupTime" inputmode="text" name="pickupTime" required="" type="text"/>
+<input aria-describedby="timeFormatHint" autocomplete="off" id="pickupTime" name="pickupTime" readonly="readonly" required="" type="text"/>
 <small id="timeFormatHint" style="font-size:0.8rem;color:#888;">Format: HH:mm (24-hour)</small>
 </div>
 <label for="passengers">Number of Passengers *</label>
@@ -253,7 +253,6 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfK6L1Zs-HEHszXPzfvwZOmTyuPNEseKs&amp;libraries=places&amp;callback=initAutocomplete"></script>
-
 <script>
 flatpickr("#pickupTime", {
   enableTime: true,

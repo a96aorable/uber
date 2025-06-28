@@ -1,38 +1,35 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Hi, it's Gee. Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get." />
-  <meta name="theme-color" content="#d50000" />
-  <title>Let's Get You Some Where - Ride with Gee</title>
-
-  <!-- Social meta -->
-  <meta property="og:title" content="Let's Get You Some Where - Ride with Gee" />
-  <meta property="og:description" content="Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get." />
-  <meta property="og:image" content="https://uber.itzgee.com/preview.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Ride with Gee" />
-  <meta name="twitter:description" content="Your next ride, done right." />
-  <meta name="twitter:image" content="https://uber.itzgee.com/preview.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Ride with Gee preview image" />
-
-  <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://uber.itzgee.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Let's Get You Some Where">
-  <meta property="og:description" content="Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get.">
-  <meta property="og:image" content="https://uber.itzgee.com/preview.png">
-  <meta property="og:image:secure_url" content="https://uber.itzgee.com/preview.png"/>
-
-  <!-- Flatpickr -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_red.css" />
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Hi, it's Gee. Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get." name="description"/>
+<meta content="#d50000" name="theme-color"/>
+<title>Let's Get You Some Where - Ride with Gee</title>
+<!-- Social meta -->
+<meta content="Let's Get You Some Where - Ride with Gee" property="og:title"/>
+<meta content="Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get." property="og:description"/>
+<meta content="https://uber.itzgee.com/preview.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Ride with Gee" name="twitter:title"/>
+<meta content="Your next ride, done right." name="twitter:description"/>
+<meta content="https://uber.itzgee.com/preview.png" name="twitter:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Ride with Gee preview image" property="og:image:alt"/>
+<!-- Facebook Meta Tags -->
+<meta content="https://uber.itzgee.com/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="Let's Get You Some Where" property="og:title"/>
+<meta content="Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get." property="og:description"/>
+<meta content="https://uber.itzgee.com/preview.png" property="og:image"/>
+<meta content="https://uber.itzgee.com/preview.png" property="og:image:secure_url"/>
+<!-- Flatpickr -->
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_red.css" rel="stylesheet"/>
+<style>
     *, *::before, *::after { box-sizing: border-box; }
     body, html {
       margin: 0; padding: 0;
@@ -139,83 +136,123 @@
   </style>
 </head>
 <body>
-
 <main>
-  <h1>LET'S GET YOU SOME WHERE</h1>
-  <h2>Hi, it's Gee. Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get.</h2>
-
-  <form id="bookingForm" action="https://formspree.io/f/xjkraeqq" method="POST" autocomplete="off">
-    <label for="firstName">First Name *</label>
-    <input type="text" id="firstName" name="firstName" required placeholder="Your first name" />
-
-    <label for="lastName">Last Name *</label>
-    <input type="text" id="lastName" name="lastName" required placeholder="Your last name" />
-
-    <label for="email">Email Address *</label>
-    <input type="email" id="email" name="email" required placeholder="example@email.com" />
-
-    <label for="mobileNumber">Mobile Number (with country code) *</label>
-    <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="+44 7XXX XXX XXX" inputmode="tel" pattern="^[0-9+\s()-]{10,18}$" />
-
-    <label for="pickupDate">Pick Up Date (DD/MM/YYYY) *</label>
-    <div class="with-icon">
-      <span class="field-icon">📅</span>
-      <input type="text" id="pickupDate" name="pickupDate" required />
-    </div>
-
-    <label for="pickupTime">Pick Up Time *</label>
-    <div class="with-icon">
-      <span class="field-icon">⏰</span>
-      <!-- Added pattern attribute -->
-      <input
-        type="time"
-        id="pickupTime"
-        name="pickupTime"
-        required
-        pattern="^([01]\d|2[0-3]):[0-5]\d$"
-        aria-describedby="timeFormatHint"
-      />
-      <small id="timeFormatHint" style="font-size:0.8rem;color:#888;">Format: HH:mm (24-hour)</small>
-    </div>
-
-    <label for="passengers">Number of Passengers *</label>
-    <select id="passengers" name="passengers" required>
-      <option value="" disabled selected>Select number of passengers</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-
-    <label for="pickupPoint">Pick Up Point *</label>
-    <div class="with-icon">
-      <span class="field-icon">📍</span>
-      <input type="text" id="pickupPoint" name="pickupPoint" placeholder="Enter pickup location" required />
-    </div>
-
-    <label for="dropoffPoint">Drop Off Point *</label>
-    <div class="with-icon">
-      <span class="field-icon">🏁</span>
-      <input type="text" id="dropoffPoint" name="dropoffPoint" placeholder="Enter drop-off location" required />
-    </div>
-
-    <label for="specialRequests">Special Requests (Optional)</label>
-    <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="e.g., 2 bags, child seat, Terminal 2 at 3:30 PM."></textarea>
-
-    <button type="submit">Book Your Ride</button>
-    <div id="loading-spinner">Submitting your booking...</div>
-    <p id="success-message">Thanks! We have received your booking request, and we will get in touch with you shortly to confirm your booking. Thanks for choosing Ride with Gee.</p>
-  </form>
+<h1>LET'S GET YOU SOME WHERE</h1>
+<h2>Hi, it's Gee. Fill out the form below and we'll get your booking completed. From airport transfers, to city breaks or anything, you'll ride in style with Gee – the only experience you'll ever get.</h2>
+<form action="https://formspree.io/f/xjkraeqq" autocomplete="off" id="bookingForm" method="POST">
+<label for="firstName">First Name *</label>
+<input id="firstName" name="firstName" placeholder="Your first name" required="" type="text"/>
+<label for="lastName">Last Name *</label>
+<input id="lastName" name="lastName" placeholder="Your last name" required="" type="text"/>
+<label for="email">Email Address *</label>
+<input id="email" name="email" placeholder="example@email.com" required="" type="email"/>
+<label for="mobileNumber">Mobile Number (with country code) *</label>
+<input id="mobileNumber" inputmode="tel" name="mobileNumber" pattern="^[0-9+\s()-]{10,18}$" placeholder="+44 7XXX XXX XXX" required="" type="tel"/>
+<label for="pickupDate">Pick Up Date (DD/MM/YYYY) *</label>
+<div class="with-icon">
+<span class="field-icon">📅</span>
+<input id="pickupDate" name="pickupDate" required="" type="text"/>
+</div>
+<label for="pickupTime">Pick Up Time *</label>
+<div class="with-icon">
+<span class="field-icon">⏰</span>
+<!-- Added pattern attribute -->
+<input aria-describedby="timeFormatHint" id="pickupTime" name="pickupTime" pattern="^([01]\d|2[0-3]):[0-5]\d$" required="" type="time"/>
+<small id="timeFormatHint" style="font-size:0.8rem;color:#888;">Format: HH:mm (24-hour)</small>
+</div>
+<label for="passengers">Number of Passengers *</label>
+<select id="passengers" name="passengers" required="">
+<option disabled="" selected="" value="">Select number of passengers</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+<label for="pickupPoint">Pick Up Point *</label>
+<div class="with-icon">
+<span class="field-icon">📍</span>
+<input id="pickupPoint" name="pickupPoint" placeholder="Enter pickup location" required="" type="text"/>
+</div>
+<label for="dropoffPoint">Drop Off Point *</label>
+<div class="with-icon">
+<span class="field-icon">🏁</span>
+<input id="dropoffPoint" name="dropoffPoint" placeholder="Enter drop-off location" required="" type="text"/>
+</div>
+<label for="specialRequests">Special Requests (Optional)</label>
+<textarea id="specialRequests" name="specialRequests" placeholder="e.g., 2 bags, child seat, Terminal 2 at 3:30 PM." rows="4"></textarea>
+<button type="submit">Book Your Ride</button>
+<div id="loading-spinner">Submitting your booking...</div>
+<p id="success-message">Thanks! We have received your booking request, and we will get in touch with you shortly to confirm your booking. Thanks for choosing Ride with Gee.</p>
+</form>
+<section id="faq" style="max-width: 480px; margin: 3rem auto 1rem auto; background: #fff; border-radius: 16px; padding: 2rem 2rem 1rem 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.08);" style="max-width: 480px; margin: 3rem auto; background: #fff; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+<h2 style="text-align:center; color:#d50000;">❓ Frequently Asked Questions</h2>
+<div class="faq-item"><button class="faq-question">💰 How much does a ride cost?</button><div class="faq-answer"><p>Prices depend on your pickup and drop-off locations, travel time, and any special requests. Once we receive your form, we’ll confirm a fair quote — no hidden charges.</p></div></div>
+<div class="faq-item"><button class="faq-question">📍 Where do you pick up from?</button><div class="faq-answer"><p>We’re based in the UK, but we cover a wide range of locations — including airports, cities, and even cross-border trips to Europe if needed. Just ask!</p></div></div>
+<div class="faq-item"><button class="faq-question">📦 Can I bring luggage or large items?</button><div class="faq-answer"><p>Absolutely. Just let us know in the “Special Requests” section of the form so we can make sure the right vehicle is ready for you.</p></div></div>
+<div class="faq-item"><button class="faq-question">👨‍👩‍👧 How many people can travel?</button><div class="faq-answer"><p>Our rides are usually for up to 4 passengers. If you need more space, let us know — we’ll do our best to accommodate you.</p></div></div>
+<div class="faq-item"><button class="faq-question">🕒 Can I book in advance?</button><div class="faq-answer"><p>Yes, and we encourage it. Whether it’s a last-minute airport run or a planned road trip next month — we’ve got you covered.</p></div></div>
+<div class="faq-item"><button class="faq-question">🧾 Do I get a booking confirmation?</button><div class="faq-answer"><p>Yes! After you submit the form, we’ll be in touch shortly to confirm all the details and share your booking info.</p></div></div>
+<div class="faq-item"><button class="faq-question">💳 How do I pay?</button><div class="faq-answer"><p>We accept contactless card, bank transfer, or cash on the day. Whichever works best for you.</p></div></div>
+<div class="faq-item"><button class="faq-question">🚗 What kind of car will I get?</button><div class="faq-answer"><p>You'll ride in a clean, comfortable, modern vehicle — always driven by Gee. No surprises, no random drivers.</p></div></div>
+<div class="faq-item"><button class="faq-question">🛂 Can you take me to Europe?</button><div class="faq-answer"><p>Yes! Whether it’s Paris, Amsterdam, or somewhere special — we offer cross-border rides. Just include details in your booking request.</p></div></div>
+<div class="faq-item" style="margin-bottom: 0;"><button class="faq-question">🧒 Do you offer child seats?</button><div class="faq-answer"><p>We can provide child or booster seats on request. Just mention it in your special requests section.</p></div></div>
+<div class="faq-item"><button class="faq-question">📩 Still have questions?</button>
+<div class="faq-answer"><p>No problem! Just drop us an email at <a href="mailto:bookings@itzgee.com">bookings@itzgee.com</a> and we’ll get back to you as soon as possible.</p></div></div>
+</section>
+<style>
+  .faq-question {
+    width: 100%;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #111;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+  }
+  .faq-question:hover {
+    background: #ffecec;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background: #fff5f5;
+    border-left: 3px solid #d50000;
+    border-radius: 0 0 10px 10px;
+    padding: 0 1rem;
+  }
+  .faq-answer p {
+    margin: 1rem 0;
+    color: #444;
+    font-size: 0.95rem;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 200px;
+    padding: 0.75rem 1rem;
+  }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.faq-item');
+          item.classList.toggle('open');
+        });
+      });
+    });
+    </script>
 </main>
-
 <footer>
   © 2025 Ride with Gee. All rights reserved.
 </footer>
-
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfK6L1Zs-HEHszXPzfvwZOmTyuPNEseKs&libraries=places&callback=initAutocomplete" async defer></script>
-
+<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfK6L1Zs-HEHszXPzfvwZOmTyuPNEseKs&amp;libraries=places&amp;callback=initAutocomplete"></script>
 <script>
   /* === Set default time BEFORE Flatpickr === */
   const defaultTime = new Date(Date.now() + 60 * 60 * 1000);
@@ -299,6 +336,5 @@
     }
   });
 </script>
-
 </body>
 </html>

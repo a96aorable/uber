@@ -157,7 +157,7 @@
 <div class="with-icon">
 <span class="field-icon">⏰</span>
 <!-- Added pattern attribute -->
-<input aria-describedby="timeFormatHint" autocomplete="off" id="pickupTime" name="pickupTime" readonly="readonly" required="" type="text"/>
+<input aria-describedby="timeFormatHint" autocomplete="off" id="pickupTime" name="pickupTime" readonly="readonly" type="text"/>
 <small id="timeFormatHint" style="font-size:0.8rem;color:#888;">Format: HH:mm (24-hour)</small>
 </div>
 <label for="passengers">Number of Passengers *</label>
@@ -260,7 +260,10 @@ flatpickr("#pickupTime", {
   dateFormat: "H:i",
   time_24hr: true,
   defaultDate: new Date(Date.now() + 60 * 60 * 1000),
-  minuteIncrement: 5
+  minuteIncrement: 5,
+  onChange: function(selectedDates, dateStr, instance) {
+    document.getElementById("pickupTime").value = dateStr;
+  }
 });
 </script></body>
 </html>
